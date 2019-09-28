@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activities.MainActivity" >
+    tools:context=".Activities.Activities.MainActivity" >
 
     <TextView
         android:id="@+id/textView"
@@ -54,6 +54,7 @@
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:text="ส่ง"
             android:layout_marginTop="10dp"
@@ -66,6 +67,7 @@
         android:layout_height="wrap_content"
         android:text="ดูสถานที่"
         android:textSize="16dp"
+        android:textStyle="bold"
         android:textColor="@color/black"
         android:layout_marginLeft="60dp"
         android:layout_marginTop="10dp"
@@ -77,6 +79,7 @@
         android:layout_height="wrap_content"
         android:text="เลือกเส้นทาง"
         android:textSize="16dp"
+        android:textStyle="bold"
         android:textColor="@color/black"
         android:layout_marginLeft="60dp"
         android:layout_marginTop="10dp"
