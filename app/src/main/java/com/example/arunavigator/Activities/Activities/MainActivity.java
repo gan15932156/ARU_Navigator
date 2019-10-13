@@ -100,13 +100,16 @@ public class MainActivity extends AppCompatActivity implements
 
     }
     public boolean onCreateOptionsMenu(Menu menu){
-        getMenuInflater().inflate(R.menu.menu_main,menu);
+        getMenuInflater().inflate(R.menu.home_login_menu,menu);
         return super.onCreateOptionsMenu(menu);
     }
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
-            case R.id.scan_qr_code:
+            case R.id.admin_menu_scan_qr_code:
                 startActivity(new Intent(MainActivity.this,QR_code_scan.class));
+            case R.id.login_admin:
+                this.finishAffinity();
+                startActivity(new Intent(MainActivity.this,AdminLoginActivity.class));
         }
         return  super.onOptionsItemSelected(item);
     }
