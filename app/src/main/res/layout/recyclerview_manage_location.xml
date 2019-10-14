@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/relative_recyclerview_manage_location"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginBottom="10dp">
+
+
+    <ImageView
+        android:id="@+id/recycler_img_manage_location"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
+        app:srcCompat="@drawable/common_google_signin_btn_icon_dark_focused"
+        android:layout_alignParentLeft="true"/>
+
+    <TextView
+        android:id="@+id/recycler_txt_manage_location_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_toRightOf="@+id/recycler_img_manage_location"
+        android:layout_marginLeft="10dp"
+        android:textSize="14sp"
+        android:textColor="@color/black" />
+
+
+</RelativeLayout>

@@ -2,6 +2,7 @@ package com.example.arunavigator.Activities.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -36,7 +37,8 @@ public class IndexAdminActivity extends AppCompatActivity {
         btn_location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(IndexAdminActivity.this,ManageLocationActivity.class));
+                finish();
             }
         });
         btn_spacific_des.setOnClickListener(new View.OnClickListener() {

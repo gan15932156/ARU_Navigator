@@ -56,13 +56,14 @@ public class AdminLoginActivity extends AppCompatActivity {
                 if(task.isSuccessful()){
                     ps.dismiss();
                     finishAffinity();
-                    startActivity(new Intent(getApplicationContext(), IndexAdminActivity.class));
+                    startActivity(new Intent(AdminLoginActivity.this, IndexAdminActivity.class));
                     finish();
                 }
                 else{
                     ps.dismiss();
                     Toast.makeText(AdminLoginActivity.this, "ล้มเหลว", Toast.LENGTH_SHORT).show();
-                    finish();
+                    edit_password.setText(null);
+                    edit_username.setText(null);
                 }
             }
         });
