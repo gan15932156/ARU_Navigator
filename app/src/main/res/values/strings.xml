@@ -1,4 +1,15 @@
 <resources>
     <string name="app_name">ARU Navigator</string>
     <string name="title_activity_test_map">Map</string>
+
+
+    <string-array name="sp_type">
+        <item>อาคาร</item>
+        <item>สถานที่</item>
+    </string-array>
+    <string-array name="sp_vertex_type">
+        <item>สถานที่</item>
+        <item>แยก</item>
+    </string-array>
+    <string name="title_activity_choose_position">Map</string>
 </resources>

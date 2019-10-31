@@ -6,8 +6,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -36,6 +40,13 @@ public class ManageLocationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_manage_location);
         init();
         load_location();
+
+        btn_new_location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ManageLocationActivity.this,NewLocationActivity.class));
+            }
+        });
     }
     private void init(){
         mContext = ManageLocationActivity.this;
@@ -57,7 +68,6 @@ public class ManageLocationActivity extends AppCompatActivity {
                     Location location = postSnapshot.getValue(Location.class);
                     mLocationList.add(location);
 
-                    Log.d("kuayyyyyyyyyy",mLocationList.toString());
                 }
                 ManageLocationAdapter adapter = new ManageLocationAdapter(ManageLocationActivity.this,mLocationList);
                 location_recyclerView.setAdapter(adapter);
@@ -70,4 +80,17 @@ public class ManageLocationActivity extends AppCompatActivity {
             }
         });
     }
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.home,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.home:
+                this.finishAffinity();
+                startActivity(new Intent(ManageLocationActivity.this,IndexAdminActivity.class));
+        }
+        return  super.onOptionsItemSelected(item);
+    }
+
 }
