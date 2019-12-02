@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.arunavigator.Activities.Activities.GetterSetter.ActivitiesClass;
 import com.example.arunavigator.Activities.Activities.GetterSetter.Location;
 import com.example.arunavigator.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -34,12 +35,11 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
 
-public class NewLocationActivity extends AppCompatActivity {
+public class NewActActivity extends AppCompatActivity {
     private Context mContext;
     private ImageView img;
     private Button btn_send,btn_choose_img,btn_choose_position;
-    private TextInputEditText edit_name,edit_des,edit_lat,edit_long;
-    private Spinner spn_type;
+    private TextInputEditText edit_name,edit_des,edit_lat,edit_long,edit_place_name;
     private int Image_Request_Code;
     private Uri uri;
     private String Database_Path;
@@ -47,7 +47,9 @@ public class NewLocationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_location);
+        setContentView(R.layout.activity_new_act);
+
+
         init();
 
         btn_send.setOnClickListener(new View.OnClickListener() {
@@ -73,23 +75,23 @@ public class NewLocationActivity extends AppCompatActivity {
             }
         });
     }
+
     private void init(){
         mContext = getApplicationContext();
-        img = findViewById(R.id.new_location_img_location);
-        btn_send = findViewById(R.id.new_location_btn_send);
-        btn_choose_img = findViewById(R.id.new_location_btn_choose_img);
-        btn_choose_position = findViewById(R.id.new_location_btn_choose_position);
-        edit_name = findViewById(R.id.new_location_edit_location_name);
-        edit_des = findViewById(R.id.new_location_edit_location_des);
-        edit_lat = findViewById(R.id.new_location_edit_location_lat);
-        edit_long = findViewById(R.id.new_location_edit_location_long);
-        spn_type = findViewById(R.id.new_location_spn_type);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.sp_type,android.R.layout.simple_spinner_item);
-        spn_type.setAdapter(adapter);
+        img = findViewById(R.id.new_act_img_act);
+        btn_send = findViewById(R.id.new_act_btn_send);
+        btn_choose_img = findViewById(R.id.new_act_btn_choose_img);
+        btn_choose_position = findViewById(R.id.new_act_btn_choose_position);
+        edit_name = findViewById(R.id.new_act_edit_act_name);
+        edit_des = findViewById(R.id.new_act_edit_act_des);
+        edit_lat = findViewById(R.id.new_act_edit_act_lat);
+        edit_long = findViewById(R.id.new_act_edit_act_long);
+        edit_place_name = findViewById(R.id.new_act_edit_place_name);
         Image_Request_Code = 7;
-        Database_Path = "Building";
+        Database_Path = "Activity";
         databaseReference = FirebaseDatabase.getInstance().getReference(Database_Path);
     }
+
     private void insert(){
         if (uri != null) {
             final ProgressDialog ps = new ProgressDialog(this);
@@ -99,7 +101,7 @@ public class NewLocationActivity extends AppCompatActivity {
             StorageReference storageReference;
             storage = FirebaseStorage.getInstance();
             storageReference = storage.getReference();
-            final StorageReference ref = storageReference.child("Building_image/" + System.currentTimeMillis() + "." + GetFileExtension(uri));
+            final StorageReference ref = storageReference.child("Activity_image/" + System.currentTimeMillis() + "." + GetFileExtension(uri));
             ref.putFile(uri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -109,11 +111,18 @@ public class NewLocationActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     @SuppressWarnings("VisibleForTests")
-                                    String location_id = databaseReference.push().getKey();
-                                    Location location = new Location(edit_name.getText().toString(),edit_des.getText().toString(),uri.toString(),
-                                            spn_type.getSelectedItem().toString(),location_id,edit_lat.getText().toString(),edit_long.getText().toString());
-                                    databaseReference.child(location_id).setValue(location);
-                                    startActivity(new Intent(mContext, ManageLocationActivity.class));
+                                    String act_id = databaseReference.push().getKey();
+                                    ActivitiesClass activitiesClass = new ActivitiesClass(
+                                            edit_des.getText().toString().trim(),
+                                            act_id,
+                                            uri.toString(),
+                                            edit_name.getText().toString().trim(),
+                                            edit_place_name.getText().toString().trim(),
+                                            edit_lat.getText().toString().trim(),
+                                            edit_long.getText().toString().trim()
+                                    );
+                                    databaseReference.child(act_id).setValue(activitiesClass);
+                                    startActivity(new Intent(mContext, ManageAcActivity.class));
                                 }
                             });
                         }

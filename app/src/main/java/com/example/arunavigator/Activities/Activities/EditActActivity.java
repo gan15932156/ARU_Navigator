@@ -14,12 +14,12 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.webkit.MimeTypeMap;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.arunavigator.Activities.Activities.GetterSetter.ActivitiesClass;
 import com.example.arunavigator.Activities.Activities.GetterSetter.Location;
 import com.example.arunavigator.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -35,11 +35,10 @@ import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 
-public class EditLocationActivity extends AppCompatActivity {
+public class EditActActivity extends AppCompatActivity {
     private ImageView img;
     private Button btn_choose_img,btn_edit,btn_delete,btn_choose_position;
-    private TextInputEditText edit_name,edit_des,edit_lat,edit_long;
-    private Spinner spn_type;
+    private TextInputEditText edit_name,edit_des,edit_lat,edit_long,edit_place_name;
     private Context mContext;
     private int Image_Request_Code;
     private Uri uri;
@@ -48,22 +47,16 @@ public class EditLocationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_location);
+        setContentView(R.layout.activity_edit_act);
+
         init();
-
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.sp_type,android.R.layout.simple_spinner_item);
-        spn_type.setAdapter(adapter);
-
         Picasso.with(mContext).load(getIntent().getStringExtra("pic")).fit().centerCrop().into(img);
         edit_name.setText(getIntent().getStringExtra("name"));
         edit_des.setText(getIntent().getStringExtra("des"));
         edit_lat.setText(getIntent().getStringExtra("lat"));
         edit_long.setText(getIntent().getStringExtra("long"));
-        String compareValue = getIntent().getStringExtra("type");
-        if (compareValue != null) {
-            int spinnerPosition = adapter.getPosition(compareValue);
-            spn_type.setSelection(spinnerPosition);
-        }
+        edit_place_name.setText(getIntent().getStringExtra("place_name"));
+
         btn_choose_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,22 +88,6 @@ public class EditLocationActivity extends AppCompatActivity {
             }
         });
     }
-    private void init(){
-        img = findViewById(R.id.edit_location_img);
-        btn_choose_img = findViewById(R.id.edit_location_btn_choose_img);
-        btn_edit = findViewById(R.id.edit_location_btn_edit);
-        btn_delete = findViewById(R.id.edit_location_btn_delete);
-        btn_choose_position = findViewById(R.id.edit_location_btn_choose_position);
-        edit_name = findViewById(R.id.edit_location_name);
-        edit_des = findViewById(R.id.edit_location_des);
-        edit_lat = findViewById(R.id.edit_location_lat);
-        edit_long = findViewById(R.id.edit_location_long);
-        spn_type = findViewById(R.id.edit_location_spn_type);
-        mContext = getApplicationContext();
-        Image_Request_Code = 7;
-        Database_Path = "Building";
-        databaseReference = FirebaseDatabase.getInstance().getReference(Database_Path);
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -134,37 +111,62 @@ public class EditLocationActivity extends AppCompatActivity {
         }
     }
 
+    private void init(){
+        img = findViewById(R.id.edit_act_img);
+        btn_choose_img = findViewById(R.id.edit_act_btn_choose_img);
+        btn_edit = findViewById(R.id.edit_act_btn_edit);
+        btn_delete = findViewById(R.id.edit_act_btn_delete);
+        btn_choose_position = findViewById(R.id.edit_act_btn_choose_position);
+        edit_name = findViewById(R.id.edit_act_name);
+        edit_des = findViewById(R.id.edit_act_des);
+        edit_lat = findViewById(R.id.edit_act_lat);
+        edit_long = findViewById(R.id.edit_act_long);
+        edit_place_name = findViewById(R.id.edit_place_name);
+        mContext = getApplicationContext();
+        Image_Request_Code = 7;
+        Database_Path = "Activity";
+        databaseReference = FirebaseDatabase.getInstance().getReference(Database_Path);
+    }
     private String GetFileExtension(Uri uri) {
         ContentResolver contentResolver = getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
         return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri)) ;
     }
-    private boolean editlocation(String id,String name,String des,String image,String type,String lat,String longg){
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Building").child(id);
-        Location location = new Location();
-        location.setLocation_id(id);
-        location.setLocation_name(name);
-        location.setLocation_des(des);
-        location.setImage_path(image);
-        location.setType(type);
-        location.setLat(lat);
-        location.setLongti(longg);
-        databaseReference.setValue(location);
+    private boolean editAct(
+            String id,
+            String name,
+            String des,
+            String image,
+            String place_name,
+            String lat,
+            String longg)
+    {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Activity").child(id);
+        ActivitiesClass activitiesClass = new ActivitiesClass();
+        activitiesClass.setAd_id(id);
+        activitiesClass.setAc_name(name);
+        activitiesClass.setAc_des(des);
+        activitiesClass.setAc_image(image);
+        activitiesClass.setAc_place_name(place_name);
+        activitiesClass.setAc_lat(lat);
+        activitiesClass.setAc_long(longg);
+        databaseReference.setValue(activitiesClass);
         return true;
     }
     private void send(){
         if (uri == null) {
             Toast.makeText(getApplicationContext(), "แก้ไขแล้ว", Toast.LENGTH_SHORT).show();
-            editlocation(
+            editAct(
                     getIntent().getStringExtra("id"),
                     edit_name.getText().toString(),
                     edit_des.getText().toString(),
                     getIntent().getStringExtra("pic"),
-                    spn_type.getSelectedItem().toString(),
+                    edit_place_name.getText().toString(),
                     edit_lat.getText().toString(),
-                    edit_long.getText().toString());
+                    edit_long.getText().toString()
+            );
             this.finishAffinity();
-            startActivity(new Intent(mContext,ManageLocationActivity.class));
+            startActivity(new Intent(mContext,ManageAcActivity.class));
         }
         else {
             final ProgressDialog pssss = new ProgressDialog(mContext);
@@ -174,7 +176,7 @@ public class EditLocationActivity extends AppCompatActivity {
             StorageReference storageReference;
             storage = FirebaseStorage.getInstance();
             storageReference = storage.getReference();
-            final StorageReference ref = storageReference.child("Building_image/" + System.currentTimeMillis() + "." + GetFileExtension(uri));
+            final StorageReference ref = storageReference.child("Activity_image/" + System.currentTimeMillis() + "." + GetFileExtension(uri));
             ref.putFile(uri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -184,16 +186,16 @@ public class EditLocationActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Uri uri) {
                                     Toast.makeText(getApplicationContext(), "แก้ไขแล้ว", Toast.LENGTH_SHORT).show();
-                                    editlocation(
+                                    editAct(
                                             getIntent().getStringExtra("id"),
                                             edit_name.getText().toString(),
                                             edit_des.getText().toString(),
                                             uri.toString(),
-                                            spn_type.getSelectedItem().toString(),
+                                            edit_place_name.getText().toString(),
                                             edit_lat.getText().toString(),
                                             edit_long.getText().toString()
                                     );
-                                    startActivity(new Intent(mContext,ManageLocationActivity.class));
+                                    startActivity(new Intent(mContext,ManageAcActivity.class));
                                 }
                             });
                         }
@@ -213,7 +215,8 @@ public class EditLocationActivity extends AppCompatActivity {
         }
     }
     private void deleteLocation(String id){
-        DatabaseReference drefLocation = FirebaseDatabase.getInstance().getReference("Building").child(id);
+        DatabaseReference drefLocation = FirebaseDatabase.getInstance().getReference("Activity").child(id);
         drefLocation.removeValue();
     }
+
 }

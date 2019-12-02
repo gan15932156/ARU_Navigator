@@ -1,45 +1,28 @@
 package com.example.arunavigator.Activities.Activities.Adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
-import android.net.Uri;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.arunavigator.Activities.Activities.EditLocationActivity;
 import com.example.arunavigator.Activities.Activities.GetterSetter.Location;
-import com.example.arunavigator.Activities.Activities.MainActivity;
 import com.example.arunavigator.R;
-import com.google.android.material.textfield.TextInputEditText;
 
-import org.w3c.dom.Text;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 
-import static com.example.arunavigator.R.layout.activity_new_location;
-import static com.example.arunavigator.R.layout.dialog_main_show_activity;
 
 public class ManageLocationAdapter extends RecyclerView.Adapter<ManageLocationAdapter.ManageLocationViewHolder> {
     private Context mContext;
     private ArrayList<Location> mLocationList;
-    private Uri uri;
 
     public ManageLocationAdapter(Context mContext, ArrayList<Location> mLocationList) {
         this.mContext = mContext;
