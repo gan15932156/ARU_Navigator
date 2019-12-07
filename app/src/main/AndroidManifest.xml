@@ -21,7 +21,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.Activities.EditActActivity"></activity>
+        <activity android:name=".Activities.Activities.NewFloorActivity"></activity>
+        <activity android:name=".Activities.Activities.ManageFloorActivity" />
+        <activity android:name=".Activities.Activities.EditActActivity" />
         <activity android:name=".Activities.Activities.NewActActivity" />
         <activity android:name=".Activities.Activities.ManageAcActivity" />
         <activity android:name=".Activities.Activities.EditLocationActivity" />

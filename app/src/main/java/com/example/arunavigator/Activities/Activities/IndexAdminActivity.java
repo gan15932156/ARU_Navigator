@@ -19,8 +19,8 @@ public class IndexAdminActivity extends AppCompatActivity {
         btn_ac.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(IndexAdminActivity.this,ManageAcActivity.class));
-                finish();
+
+                startActivity(new Intent(IndexAdminActivity.this,ManageAcActivity.class)); finishAffinity();
             }
         });
         btn_edge.setOnClickListener(new View.OnClickListener() {
@@ -33,13 +33,14 @@ public class IndexAdminActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                startActivity(new Intent(IndexAdminActivity.this,ManageFloorActivity.class)); finishAffinity();
             }
         });
         btn_location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(IndexAdminActivity.this,ManageLocationActivity.class));
-                finish();
+
+                startActivity(new Intent(IndexAdminActivity.this,ManageLocationActivity.class));finishAffinity();
             }
         });
         btn_spacific_des.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +65,7 @@ public class IndexAdminActivity extends AppCompatActivity {
     private void init(){
         btn_ac = findViewById(R.id.index_admin_btn_manage_activity);
         btn_edge = findViewById(R.id.index_admin_btn_manage_edge);
-        btn_floor = findViewById(R.id.index_admin_btn_manage_edge);
+        btn_floor = findViewById(R.id.index_admin_btn_manage_floor_location);
         btn_location = findViewById(R.id.index_admin_btn_manage_location);
         btn_spacific_des = findViewById(R.id.index_admin_btn_manage_spacific_des);
         btn_toilet = findViewById(R.id.index_admin_btn_manage_toilet);

@@ -84,7 +84,7 @@ public class EditActActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(mContext, "ลบแล้ว", Toast.LENGTH_SHORT).show();
                 deleteLocation(getIntent().getStringExtra("id"));
-                startActivity(new Intent(mContext,ManageLocationActivity.class));
+                startActivity(new Intent(mContext,ManageAcActivity.class));
             }
         });
     }
@@ -148,8 +148,8 @@ public class EditActActivity extends AppCompatActivity {
         activitiesClass.setAc_des(des);
         activitiesClass.setAc_image(image);
         activitiesClass.setAc_place_name(place_name);
-        activitiesClass.setAc_lat(lat);
-        activitiesClass.setAc_long(longg);
+        activitiesClass.setLat(lat);
+        activitiesClass.setMlong(longg);
         databaseReference.setValue(activitiesClass);
         return true;
     }

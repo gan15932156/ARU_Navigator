@@ -4,17 +4,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 public class ActivitiesClass {
-    private String ac_des,ad_id,ac_image,ac_name,ac_place_name,ac_lat,ac_long;
+    private String ac_des,ad_id,ac_image,ac_name,ac_place_name,lat,mlong;
     public ActivitiesClass(){}
 
-    public ActivitiesClass(String ac_des, String ad_id, String ac_image, String ac_name, String ac_place_name, String ac_lat, String ac_long) {
+    public ActivitiesClass(String ac_des, String ad_id, String ac_image, String ac_name, String ac_place_name, String lat, String mlong) {
         this.ac_des = ac_des;
         this.ad_id = ad_id;
         this.ac_image = ac_image;
         this.ac_name = ac_name;
         this.ac_place_name = ac_place_name;
-        this.ac_lat = ac_lat;
-        this.ac_long = ac_long;
+        this.lat = lat;
+        this.mlong = mlong;
     }
 
     public String getAc_des() {
@@ -57,20 +57,20 @@ public class ActivitiesClass {
         this.ac_place_name = ac_place_name;
     }
 
-    public String getAc_lat() {
-        return ac_lat;
+    public String getLat() {
+        return lat;
     }
 
-    public void setAc_lat(String ac_lat) {
-        this.ac_lat = ac_lat;
+    public void setLat(String lat) {
+        this.lat = lat;
     }
 
-    public String getAc_long() {
-        return ac_long;
+    public String getMlong() {
+        return mlong;
     }
 
-    public void setAc_long(String ac_long) {
-        this.ac_long = ac_long;
+    public void setMlong(String mlong) {
+        this.mlong = mlong;
     }
 
     @NonNull

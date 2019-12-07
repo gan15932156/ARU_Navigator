@@ -51,8 +51,8 @@ public class ManageActAdapter extends RecyclerView.Adapter<ManageActAdapter.Mana
                 intent.putExtra("name",activitiesClass.getAc_name());
                 intent.putExtra("des",activitiesClass.getAc_des());
                 intent.putExtra("pic",activitiesClass.getAc_image());
-                intent.putExtra("lat",activitiesClass.getAc_lat());
-                intent.putExtra("long",activitiesClass.getAc_long());
+                intent.putExtra("lat",activitiesClass.getLat());
+                intent.putExtra("long",activitiesClass.getMlong());
                 intent.putExtra("place_name",activitiesClass.getAc_place_name());
                 mContext.startActivity(intent);
                 return false;
