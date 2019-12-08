@@ -20,7 +20,8 @@ public class IndexAdminActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(IndexAdminActivity.this,ManageAcActivity.class)); finishAffinity();
+                startActivity(new Intent(IndexAdminActivity.this,ManageAcActivity.class));
+                finishAffinity();
             }
         });
         btn_edge.setOnClickListener(new View.OnClickListener() {
@@ -33,14 +34,16 @@ public class IndexAdminActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(IndexAdminActivity.this,ManageFloorActivity.class)); finishAffinity();
+                startActivity(new Intent(IndexAdminActivity.this,ManageFloorActivity.class));
+                finishAffinity();
             }
         });
         btn_location.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(IndexAdminActivity.this,ManageLocationActivity.class));finishAffinity();
+                startActivity(new Intent(IndexAdminActivity.this,ManageLocationActivity.class));
+                finishAffinity();
             }
         });
         btn_spacific_des.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +55,8 @@ public class IndexAdminActivity extends AppCompatActivity {
         btn_toilet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(IndexAdminActivity.this,ManageToiletActivity.class));
+                finishAffinity();
             }
         });
         btn_vertex.setOnClickListener(new View.OnClickListener() {

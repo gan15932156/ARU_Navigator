@@ -11,5 +11,10 @@
         <item>สถานที่</item>
         <item>แยก</item>
     </string-array>
+
+    <string-array name="spn_toilet_type">
+        <item>ชาย</item>
+        <item>หญิง</item>
+    </string-array>
     <string name="title_activity_choose_position">Map</string>
 </resources>

@@ -4,14 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.arunavigator.Activities.Activities.GetterSetter.ActivitiesClass;
 import com.example.arunavigator.Activities.Activities.GetterSetter.Floor;
 import com.example.arunavigator.R;
 import com.google.android.material.textfield.TextInputEditText;
@@ -22,7 +19,6 @@ public class NewFloorActivity extends AppCompatActivity {
     private Context mContext;
     private Button btn_send;
     private TextInputEditText edit_name,edit_number;
-    private Uri uri;
     private String Database_Path;
     private DatabaseReference databaseReference;
     @Override

@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.arunavigator.Activities.Activities.EditFloorActivity;
 import com.example.arunavigator.Activities.Activities.EditLocationActivity;
 import com.example.arunavigator.Activities.Activities.GetterSetter.Floor;
 import com.example.arunavigator.Activities.Activities.GetterSetter.Location;
@@ -43,7 +44,7 @@ public class ManageFloorAdapter extends RecyclerView.Adapter<ManageFloorAdapter.
         holder.manage_floor_relative.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Intent intent = new Intent(mContext, EditLocationActivity.class);
+                Intent intent = new Intent(mContext, EditFloorActivity.class);
                 intent.putExtra("floor_id",ft.getFloor_id());
                 intent.putExtra("location_id",ft.getLocation_id());
                 intent.putExtra("floor_number",ft.getFloor_number());
