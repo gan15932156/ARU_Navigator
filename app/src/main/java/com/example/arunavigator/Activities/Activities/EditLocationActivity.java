@@ -4,9 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -89,9 +91,23 @@ public class EditLocationActivity extends AppCompatActivity {
         btn_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "ลบแล้ว", Toast.LENGTH_SHORT).show();
-                deleteLocation(getIntent().getStringExtra("id"));
-                startActivity(new Intent(mContext,ManageLocationActivity.class));
+                AlertDialog.Builder builder = new AlertDialog.Builder(EditLocationActivity.this);
+                builder.setCancelable(false);
+                builder.setMessage("กรุณาตรวจสอบข้อมูลก่อนส่ง");
+                builder.setPositiveButton("ยืนยัน", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(mContext, "ลบแล้ว", Toast.LENGTH_SHORT).show();
+                        deleteLocation(getIntent().getStringExtra("id"));
+                        startActivity(new Intent(mContext,ManageLocationActivity.class));
+                    }
+                });
+                builder.setNegativeButton("ยกเลิก", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) { }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
     }

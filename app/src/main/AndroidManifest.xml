@@ -21,7 +21,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.Activities.EditToiletActivity"></activity>
+        <activity android:name=".Activities.Activities.EditSpDesActivity"></activity>
+        <activity android:name=".Activities.Activities.NewSpDesActivity" />
+        <activity android:name=".Activities.Activities.SpacificDesActivity" />
+        <activity android:name=".Activities.Activities.EditToiletActivity" />
         <activity android:name=".Activities.Activities.NewToiletActivity" />
         <activity android:name=".Activities.Activities.ManageToiletActivity" />
         <activity android:name=".Activities.Activities.EditFloorActivity" />
