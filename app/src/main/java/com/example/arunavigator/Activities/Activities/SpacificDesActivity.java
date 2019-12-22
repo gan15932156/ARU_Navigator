@@ -17,9 +17,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.arunavigator.Activities.Activities.Adapter.CustomAdapterFloorSpinner;
-import com.example.arunavigator.Activities.Activities.Adapter.ManageFloorAdapter;
 import com.example.arunavigator.Activities.Activities.Adapter.ManageSpDesAdapter;
-import com.example.arunavigator.Activities.Activities.GetterSetter.Floor;
 import com.example.arunavigator.Activities.Activities.GetterSetter.Location;
 import com.example.arunavigator.Activities.Activities.GetterSetter.SpacificDes;
 import com.example.arunavigator.R;

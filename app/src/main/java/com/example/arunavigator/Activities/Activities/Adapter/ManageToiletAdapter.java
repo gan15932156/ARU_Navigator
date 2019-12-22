@@ -5,17 +5,13 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.example.arunavigator.Activities.Activities.EditLocationActivity;
 import com.example.arunavigator.Activities.Activities.EditToiletActivity;
-import com.example.arunavigator.Activities.Activities.GetterSetter.Location;
 import com.example.arunavigator.Activities.Activities.GetterSetter.Toilet;
 import com.example.arunavigator.R;
 

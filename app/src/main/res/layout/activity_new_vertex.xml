@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/new_vertex_textlayout_vertex_name"
+            android:layout_width="217dp"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="@color/black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/new_vertex_edit_vertex_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="ชื่อโหนด แยก สถานที่"
+                android:inputType="text"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/new_vertex_textlayout_vertex_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="@color/black">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/new_vertex_edit_vertex_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="ลำดับ"
+                android:inputType="text"
+                android:textSize="16sp" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+
+        <Spinner
+            android:id="@+id/new_vertex_spn_building_name"
+            android:layout_width="136dp"
+            android:layout_height="30dp"
+            android:layout_weight="1" />
+
+        <Spinner
+            android:id="@+id/new_vertex_spn_vertex_type"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_weight="1" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp">
+
+        <Spinner
+            android:id="@+id/new_vertex_spn_vertex_path_type"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp" />
+        <Button
+            android:id="@+id/new_vertex_btn_insert_vertex"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:background="@color/cyan"
+            android:text="เพิ่ม"
+            android:textAlignment="center"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"/>
+        <Button
+            android:id="@+id/new_vertex_btn_reload_data"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:background="@color/yellow"
+            android:text="รีเฟรท"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16sp"/>
+    </LinearLayout>
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Activities.Activities.NewVertexActivity" />
+</LinearLayout>

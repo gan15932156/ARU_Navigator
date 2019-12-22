@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.example.arunavigator.Activities.Activities.GetterSetter.ActivitiesClass;
 import com.example.arunavigator.Activities.Activities.GetterSetter.Floor;
 import com.example.arunavigator.R;
 import com.google.android.material.textfield.TextInputEditText;

@@ -18,11 +18,9 @@ import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.arunavigator.Activities.Activities.GetterSetter.ActivitiesClass;
-import com.example.arunavigator.Activities.Activities.GetterSetter.Location;
 import com.example.arunavigator.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;

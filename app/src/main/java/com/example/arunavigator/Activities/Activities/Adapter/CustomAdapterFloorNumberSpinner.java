@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.arunavigator.Activities.Activities.GetterSetter.Floor;
-import com.example.arunavigator.Activities.Activities.GetterSetter.Location;
 import com.example.arunavigator.R;
 
 import java.util.List;

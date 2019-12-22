@@ -55,7 +55,7 @@ public class IndexAdminActivity extends AppCompatActivity {
         btn_vertex.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(IndexAdminActivity.this,NewVertexActivity.class));
             }
         });
     }

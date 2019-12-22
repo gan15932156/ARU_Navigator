@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.arunavigator">
+
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -21,19 +22,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.Activities.EditSpDesActivity"></activity>
-        <activity android:name=".Activities.Activities.NewSpDesActivity" />
-        <activity android:name=".Activities.Activities.SpacificDesActivity" />
-        <activity android:name=".Activities.Activities.EditToiletActivity" />
-        <activity android:name=".Activities.Activities.NewToiletActivity" />
-        <activity android:name=".Activities.Activities.ManageToiletActivity" />
-        <activity android:name=".Activities.Activities.EditFloorActivity" />
-        <activity android:name=".Activities.Activities.NewFloorActivity" />
-        <activity android:name=".Activities.Activities.ManageFloorActivity" />
-        <activity android:name=".Activities.Activities.EditActActivity" />
-        <activity android:name=".Activities.Activities.NewActActivity" />
-        <activity android:name=".Activities.Activities.ManageAcActivity" />
-        <activity android:name=".Activities.Activities.EditLocationActivity" />
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -46,6 +35,22 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+        <activity
+            android:name=".Activities.Activities.NewVertexActivity"
+            android:label="@string/title_activity_new_vertex"></activity>
+        <activity android:name=".Activities.Activities.EditSpDesActivity" />
+        <activity android:name=".Activities.Activities.NewSpDesActivity" />
+        <activity android:name=".Activities.Activities.SpacificDesActivity" />
+        <activity android:name=".Activities.Activities.EditToiletActivity" />
+        <activity android:name=".Activities.Activities.NewToiletActivity" />
+        <activity android:name=".Activities.Activities.ManageToiletActivity" />
+        <activity android:name=".Activities.Activities.EditFloorActivity" />
+        <activity android:name=".Activities.Activities.NewFloorActivity" />
+        <activity android:name=".Activities.Activities.ManageFloorActivity" />
+        <activity android:name=".Activities.Activities.EditActActivity" />
+        <activity android:name=".Activities.Activities.NewActActivity" />
+        <activity android:name=".Activities.Activities.ManageAcActivity" />
+        <activity android:name=".Activities.Activities.EditLocationActivity" />
         <activity
             android:name=".Activities.Activities.ChoosePositionActivity"
             android:label="@string/title_activity_choose_position" />

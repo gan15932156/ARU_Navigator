@@ -2,7 +2,10 @@
     <string name="app_name">ARU Navigator</string>
     <string name="title_activity_test_map">Map</string>
 
-
+    <string-array name="sp_vertex_path_type">
+        <item>ทางเดินรถ</item>
+        <item>ทางเดินเท้า</item>
+    </string-array>
     <string-array name="sp_type">
         <item>อาคาร</item>
         <item>สถานที่</item>
@@ -17,4 +20,5 @@
         <item>หญิง</item>
     </string-array>
     <string name="title_activity_choose_position">Map</string>
+    <string name="title_activity_new_vertex">Map</string>
 </resources>

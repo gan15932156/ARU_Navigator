@@ -18,7 +18,6 @@ import android.widget.Toast;
 
 import com.example.arunavigator.Activities.Activities.Adapter.CustomAdapterFloorNumberSpinner;
 import com.example.arunavigator.Activities.Activities.Adapter.CustomAdapterFloorSpinner;
-import com.example.arunavigator.Activities.Activities.Adapter.ManageFloorAdapter;
 import com.example.arunavigator.Activities.Activities.Adapter.ManageToiletAdapter;
 import com.example.arunavigator.Activities.Activities.GetterSetter.Floor;
 import com.example.arunavigator.Activities.Activities.GetterSetter.Location;

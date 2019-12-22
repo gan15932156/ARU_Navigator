@@ -14,9 +14,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.arunavigator.Activities.Activities.Adapter.ManageActAdapter;
-import com.example.arunavigator.Activities.Activities.Adapter.ManageLocationAdapter;
 import com.example.arunavigator.Activities.Activities.GetterSetter.ActivitiesClass;
-import com.example.arunavigator.Activities.Activities.GetterSetter.Location;
 import com.example.arunavigator.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
