@@ -36,8 +36,11 @@
             android:value="@string/google_maps_key" />
 
         <activity
+            android:name=".Activities.Activities.NewEdgeActivity"
+            android:label="@string/title_activity_new_edge"></activity>
+        <activity
             android:name=".Activities.Activities.NewVertexActivity"
-            android:label="@string/title_activity_new_vertex"></activity>
+            android:label="@string/title_activity_new_vertex" />
         <activity android:name=".Activities.Activities.EditSpDesActivity" />
         <activity android:name=".Activities.Activities.NewSpDesActivity" />
         <activity android:name=".Activities.Activities.SpacificDesActivity" />

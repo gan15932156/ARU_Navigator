@@ -25,7 +25,7 @@ public class IndexAdminActivity extends AppCompatActivity {
         btn_edge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(IndexAdminActivity.this,NewEdgeActivity.class));
             }
         });
         btn_floor.setOnClickListener(new View.OnClickListener() {
