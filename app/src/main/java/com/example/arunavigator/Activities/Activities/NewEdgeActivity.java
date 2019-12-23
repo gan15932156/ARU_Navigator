@@ -60,8 +60,6 @@ public class NewEdgeActivity extends FragmentActivity implements OnMapReadyCallb
         LatLng sydney = new LatLng(14.3472549, 100.5653264);
         mMap.moveCamera(newLatLngZoom(sydney, 15));
 
-
-
     }
     private void enableMyLocationIfPermitted() {
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
