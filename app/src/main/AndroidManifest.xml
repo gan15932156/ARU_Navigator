@@ -36,8 +36,11 @@
             android:value="@string/google_maps_key" />
 
         <activity
+            android:name=".Activities.Activities.FindPathActivity"
+            android:label="@string/title_activity_find_path"></activity>
+        <activity
             android:name=".Activities.Activities.NewEdgeActivity"
-            android:label="@string/title_activity_new_edge"></activity>
+            android:label="@string/title_activity_new_edge" />
         <activity
             android:name=".Activities.Activities.NewVertexActivity"
             android:label="@string/title_activity_new_vertex" />

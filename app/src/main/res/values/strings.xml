@@ -22,4 +22,5 @@
     <string name="title_activity_choose_position">Map</string>
     <string name="title_activity_new_vertex">Map</string>
     <string name="title_activity_new_edge">Map</string>
+    <string name="title_activity_find_path">Map</string>
 </resources>

@@ -50,7 +50,7 @@ public class NewVertexActivity extends FragmentActivity implements OnMapReadyCal
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private FirebaseDatabase mDatabase;
     private DatabaseReference mRef;
-    private String lat,mlong;
+    private String lat,mlong,vertex_building_name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,8 +101,16 @@ public class NewVertexActivity extends FragmentActivity implements OnMapReadyCal
                     MarkerOptions markerOptions = new MarkerOptions();
                     mDatabase = FirebaseDatabase.getInstance();
                     mRef = mDatabase.getReference("Vertex");
+                    String vetex_name = "";
+                    if(spn_vertex_type.getSelectedItem().toString().equals("สถานที่")){
+                        vertex_building_name = spn_building_name.getSelectedItem().toString();
+                    }
+                    else{
+                        vertex_building_name = "แยก";
+                    }
+                    vetex_name = "Vertex_"+vertex_building_name+"_"+edit_vertex_number.getText().toString();
 
-                    edit_vertex_name.setText("Vertex_"+spn_building_name.getSelectedItem().toString()+"_"+edit_vertex_number.getText().toString());
+                    edit_vertex_name.setText(vetex_name);
                     markerOptions.position(latLng);
                     mMap.addMarker(markerOptions);
                     lat = String.valueOf(latLng.latitude);
@@ -177,7 +185,7 @@ public class NewVertexActivity extends FragmentActivity implements OnMapReadyCal
                     mlong,
                     edit_vertex_number.getText().toString(),
                     spn_vertex_type.getSelectedItem().toString(),
-                    spn_building_name.getSelectedItem().toString(),
+                    vertex_building_name,
                     spn_vertex_path_type.getSelectedItem().toString()
             );
             mRef.child(vertex_id).setValue(vertex);
@@ -226,7 +234,7 @@ public class NewVertexActivity extends FragmentActivity implements OnMapReadyCal
                         MarkerOptions marker = new MarkerOptions().position(new LatLng(
                                 Double.parseDouble(dataSnapshot1.child("vertex_lat").getValue(String.class)),
                                 Double.parseDouble(dataSnapshot1.child("vertex_long").getValue(String.class))
-                        ));
+                        )).title(dataSnapshot1.child("vertex_name").getValue(String.class));
                         if(dataSnapshot1.child("vertex_path_type").getValue(String.class).equals("ทางเดินรถ")){
                             marker.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
                         }

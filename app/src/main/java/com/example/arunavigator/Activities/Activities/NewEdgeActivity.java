@@ -7,11 +7,14 @@ import androidx.fragment.app.FragmentActivity;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -50,7 +53,7 @@ public class NewEdgeActivity extends FragmentActivity implements OnMapReadyCallb
 
     private GoogleMap mMap;
     private Context mContext;
-    private Button btn_reload,btn_load_data;
+    private Button btn_reload,btn_load_data,btn_back;
     private Spinner spn_vertex_path_type;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private FirebaseDatabase mDatabase;
@@ -99,6 +102,13 @@ public class NewEdgeActivity extends FragmentActivity implements OnMapReadyCallb
                 show_edge();
             }
         });
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mContext,IndexAdminActivity.class));
+                finishAffinity();
+            }
+        });
     }
 
     @Override
@@ -111,7 +121,7 @@ public class NewEdgeActivity extends FragmentActivity implements OnMapReadyCallb
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
         LatLng sydney = new LatLng(14.3472549, 100.5653264);
-        mMap.moveCamera(newLatLngZoom(sydney, 15));
+        mMap.moveCamera(newLatLngZoom(sydney, 18));
 
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
@@ -141,7 +151,7 @@ public class NewEdgeActivity extends FragmentActivity implements OnMapReadyCallb
                             //Log.d("TAGGGGGGG",myArrList.get(j).get("vertex_name")+" "+myListVertexBase.get(i).get("vertex_name"));
                             if(myArrList.get(j).get("vertex_name").equals(myListVertexBase.get(i).get("vertex_name"))){
                                 //Toast.makeText(mContext, myListVertexBase.get(i).get("vertex_name")+" "+myListVertexBase.get(i).get("vertex_number"), Toast.LENGTH_SHORT).show();
-                                Log.d("TAGGGGGGG",myListVertexBase.get(i).get("vertex_name")+" "+myListVertexBase.get(i).get("vertex_number"));
+                                //Log.d("TAGGGGGGG",myListVertexBase.get(i).get("vertex_name")+" "+myListVertexBase.get(i).get("vertex_number"));
                                 arrList.add(myListVertexBase.get(i).get("vertex_number"));
                                 arrListLatLng.add(new LatLng(
                                         Double.parseDouble(myListVertexBase.get(i).get("vertex_lat")),
@@ -233,16 +243,14 @@ public class NewEdgeActivity extends FragmentActivity implements OnMapReadyCallb
         spn_vertex_path_type = findViewById(R.id.new_edge_spn_vertex_type);
         ArrayAdapter<CharSequence> path_type_adapter = ArrayAdapter.createFromResource(this,R.array.sp_vertex_path_type,android.R.layout.simple_spinner_item);
         spn_vertex_path_type.setAdapter(path_type_adapter);
-
-
-        //load_edge_from_firebase_async();
-
+        btn_back = findViewById(R.id.new_edge_btn_back);
     }
 
     private void load_vertex_by_path_type(final String vertex_path_type){
         mMap.clear();
         vertices.clear();
         myListVertexBase.clear();
+        edges.clear();
         load_building_data();
         Query query = FirebaseDatabase.getInstance().getReference("Vertex")
                 .orderByChild("vertex_path_type")
@@ -291,12 +299,9 @@ public class NewEdgeActivity extends FragmentActivity implements OnMapReadyCallb
                     Toast.makeText(mContext, "ไม่สามารถเรียกข้อมูล Vertex ได้", Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) { }
         });
-
-
         query = FirebaseDatabase.getInstance().getReference("Edge")
                 .orderByChild("vertex_path_type")
                 .equalTo(vertex_path_type);
@@ -319,7 +324,6 @@ public class NewEdgeActivity extends FragmentActivity implements OnMapReadyCallb
                     Toast.makeText(mContext, "ไม่สามารถเรียกข้อมูล Edge ได้", Toast.LENGTH_SHORT).show();
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) { }
         });
@@ -344,49 +348,46 @@ public class NewEdgeActivity extends FragmentActivity implements OnMapReadyCallb
                 else{
                     Toast.makeText(mContext, "ไม่สามารถเรียกข้อมูลอาคารและสถานที่ได้", Toast.LENGTH_SHORT).show();
                 }
-               
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) { }
         });
-
-
-
     }
     private void show_edge(){
         String s_lat = null;
         String s_long = null;
         String d_lat = null;
         String d_long = null;
-        for (int i = 0 ; i < edges.size() ; i++){
-            Log.d("TAGGGGGGG",vertices.get(Integer.parseInt(edges.get(i).getEdge_source())).getVertex_number()+" "+vertices.get(Integer.parseInt(edges.get(i).getEdge_destination())).getVertex_number());
-            //Log.d("TAGGGGG",edges.get(i).getEdge_source()+" "+edges.get(i).getEdge_destination());
-
-            for (int j = 0 ; j < vertices.size() ; j++){
-
-                if(vertices.get(j).getVertex_number().equals(edges.get(i).getEdge_source())){
-                    s_lat = vertices.get(j).getVertex_lat();
-                    s_long = vertices.get(j).getVertex_long();
+        // show edge with check if
+        if(!edges.get(0).getEdge_id().isEmpty()){
+            for (int i = 0 ; i < edges.size() ; i++){
+                for (int j = 0 ; j < vertices.size() ; j++){
+                    if(vertices.get(j).getVertex_number().equals(edges.get(i).getEdge_source())){
+                        s_lat = vertices.get(j).getVertex_lat();
+                        s_long = vertices.get(j).getVertex_long();
+                    }
+                    if(vertices.get(j).getVertex_number().equals(edges.get(i).getEdge_destination())){
+                        d_lat = vertices.get(j).getVertex_lat();
+                        d_long = vertices.get(j).getVertex_long();
+                    }
                 }
-                if(vertices.get(j).getVertex_number().equals(edges.get(i).getEdge_destination())){
-                    d_lat = vertices.get(j).getVertex_lat();
-                    d_long = vertices.get(j).getVertex_long();
-                }
+                polyline = mMap.addPolyline(new PolylineOptions()
+                        .add(
+                                new LatLng(Double.parseDouble(s_lat),Double.parseDouble(s_long)),
+                                new LatLng(Double.parseDouble(d_lat),Double.parseDouble(d_long))
+                        )
+                        .width(5)
+                        .color(Color.RED)
+                );
             }
-            polyline = mMap.addPolyline(new PolylineOptions()
-                .add(
-                        new LatLng(Double.parseDouble(s_lat),Double.parseDouble(s_long)),
-                        new LatLng(Double.parseDouble(d_lat),Double.parseDouble(d_long))
-                )
-                    .width(5)
-                    .color(Color.RED)
-            );
         }
-        /*for (int j = 0 ; j < vertices.size() ; j ++){
-            Log.d("TAGGGGG",vertices.get(j).getVertex_name()+" "+vertices.get(j).getVertex_number());
-        }*/
+        else{
+            Toast.makeText(mContext, "ไม่พบข้อมูล Edge", Toast.LENGTH_SHORT).show();
+        }
     }
     private void reload(){
-
+        startActivity(new Intent(mContext,NewEdgeActivity.class));
+        this.finishAffinity();
     }
+
 }
