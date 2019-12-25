@@ -13,7 +13,16 @@
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp">
-
+        <Button
+            android:id="@+id/new_edge_btn_load_data"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/cyan"
+            android:text="เรียกข้อมูล"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
         <Button
             android:id="@+id/new_edge_btn_reload"
             android:layout_width="wrap_content"

@@ -3,13 +3,13 @@ package com.example.arunavigator.Activities.Activities.GetterSetter;
 import androidx.annotation.NonNull;
 
 public class Edge {
-    private String edge_id,edge_source,edge_destination;
-    private int distance;
+    private String edge_id,edge_source,edge_destination,vertex_path_type,distance;
 
-    public Edge(String edge_id, String edge_source, String edge_destination, int distance) {
+    public Edge(String edge_id, String edge_source, String edge_destination, String vertex_path_type, String distance) {
         this.edge_id = edge_id;
         this.edge_source = edge_source;
         this.edge_destination = edge_destination;
+        this.vertex_path_type = vertex_path_type;
         this.distance = distance;
     }
 
@@ -37,11 +37,19 @@ public class Edge {
         this.edge_destination = edge_destination;
     }
 
-    public int getDistance() {
+    public String getVertex_path_type() {
+        return vertex_path_type;
+    }
+
+    public void setVertex_path_type(String vertex_path_type) {
+        this.vertex_path_type = vertex_path_type;
+    }
+
+    public String getDistance() {
         return distance;
     }
 
-    public void setDistance(int distance) {
+    public void setDistance(String distance) {
         this.distance = distance;
     }
 

@@ -111,8 +111,6 @@ public class NewVertexActivity extends FragmentActivity implements OnMapReadyCal
 
             }
         });
-
-
     }
 
     private void init(){
