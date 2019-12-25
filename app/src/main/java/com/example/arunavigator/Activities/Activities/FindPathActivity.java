@@ -266,8 +266,8 @@ public class FindPathActivity extends FragmentActivity implements OnMapReadyCall
                 path_Destination = jj ;
             }
         }
-        Log.d("TAGGGG",vertex_cals.get(path_source)+"");
-        Log.d("TAGGGG",vertex_cals.get(path_Destination)+"");
+        //Log.d("TAGGGG",vertex_cals.get(path_source)+"");
+        //Log.d("TAGGGG",vertex_cals.get(path_Destination)+"");
         //Toast.makeText(mContext, path_source+" "+path_Destination, Toast.LENGTH_SHORT).show();
 
         Graph graph = new Graph(vertex_cals, edge_cals); //init
@@ -319,8 +319,6 @@ public class FindPathActivity extends FragmentActivity implements OnMapReadyCall
                                     .color(Color.GREEN));
                         }
                     }
-                    /*Log.d("TAGGGG",path.get(i).getVertex_name());
-                    Log.d("TAGGGG",path.get(i).getVertex_name()+" "+path.get(i).getVertex_building_name());*/
                 }
 
             }
@@ -373,13 +371,23 @@ public class FindPathActivity extends FragmentActivity implements OnMapReadyCall
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int source = 0;
+                int des = 0;
                 if(dataSnapshot.exists()){
                     edge_cals.clear();
                     for(DataSnapshot dataSnapshot2 : dataSnapshot.getChildren()){
+                        for(int i = 0 ; i < vertex_cals.size() ; i++){
+                            if(vertex_cals.get(i).getVertex_number().equals(dataSnapshot2.child("edge_source").getValue(String.class))){
+                                source = i ;
+                            }
+                            if(vertex_cals.get(i).getVertex_number().equals(dataSnapshot2.child("edge_destination").getValue(String.class))){
+                                des = i ;
+                            }
+                        }
                         edge_cal = new Edge_cal(
                                 dataSnapshot2.child("edge_id").getValue(String.class),
-                                vertex_cals.get(Integer.parseInt(dataSnapshot2.child("edge_source").getValue(String.class))),
-                                vertex_cals.get(Integer.parseInt(dataSnapshot2.child("edge_destination").getValue(String.class))),
+                                vertex_cals.get(source),
+                                vertex_cals.get(des),
                                 Integer.parseInt(dataSnapshot2.child("distance").getValue(String.class))
                         );
                         edge_cals.add(edge_cal);

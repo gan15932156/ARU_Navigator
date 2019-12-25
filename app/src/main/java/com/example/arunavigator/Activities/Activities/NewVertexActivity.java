@@ -228,9 +228,9 @@ public class NewVertexActivity extends FragmentActivity implements OnMapReadyCal
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
-                    int vertex_number = (int) (dataSnapshot.getChildrenCount() + 1);
-                    edit_vertex_number.setText(String.valueOf(vertex_number));
                     for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+                        int number = Integer.parseInt(dataSnapshot1.child("vertex_number").getValue(String.class)) + 1 ;
+                        edit_vertex_number.setText(String.valueOf(number));
                         MarkerOptions marker = new MarkerOptions().position(new LatLng(
                                 Double.parseDouble(dataSnapshot1.child("vertex_lat").getValue(String.class)),
                                 Double.parseDouble(dataSnapshot1.child("vertex_long").getValue(String.class))
@@ -245,9 +245,10 @@ public class NewVertexActivity extends FragmentActivity implements OnMapReadyCal
                         mMap.addMarker(marker);
                     }
                 }
+
                 else{
+                    edit_vertex_number.setText("0");
                     Toast.makeText(mContext, "ไม่พบข้อมูล", Toast.LENGTH_SHORT).show();
-                    finish();
                 }
 
             }

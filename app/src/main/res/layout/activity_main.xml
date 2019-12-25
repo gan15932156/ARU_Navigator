@@ -57,6 +57,7 @@
             android:textStyle="bold"
             android:textColor="@color/black"
             android:text="ส่ง"
+            android:background="@color/greenYellow"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp" />
     </LinearLayout>
@@ -67,6 +68,7 @@
         android:layout_height="wrap_content"
         android:text="ดูสถานที่"
         android:textSize="16dp"
+        android:background="@color/cyan"
         android:textStyle="bold"
         android:textColor="@color/black"
         android:layout_marginLeft="60dp"
@@ -77,8 +79,9 @@
         android:id="@+id/main_btn_choose_path"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="เลือกเส้นทาง"
+        android:text="ค้นหาเส้นทาง"
         android:textSize="16dp"
+        android:background="@color/cyan"
         android:textStyle="bold"
         android:textColor="@color/black"
         android:layout_marginLeft="60dp"
