@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:layout_toRightOf="@+id/recycler_img_manage_act"
         android:layout_marginLeft="10dp"
         android:textSize="16sp"
         android:textStyle="bold"
